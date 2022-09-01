@@ -47,11 +47,16 @@ namespace CompassInterviewTest
         //Todo (Make sure to convert the ChosenFrequency value to exahertz by multiplying it by 1.0E18)
         private bool ValidateInputVariables(out string errorMessage)
         {
-            //if _viewModel.Chosen > Max ||  viewModel.CHosn < Min
-            errorMessage = "Outside Range";
-            //set the view model
-            errorMessageLabel.Content = errorMessage;
-            return true;
+            var outside = false;
+            if (_viewModel.ChosenFrequency > OpacityCalculatorConstants.MinimumFrequency ||
+                _viewModel.ChosenFrequency < OpacityCalculatorConstants.MaximumFrequency)
+            {
+                outside = true;
+                errorMessage = "Outside Range";
+                //set the view model
+                errorMessageLabel.Content = errorMessage;
+            }
+                return outside;
         }
         
         private void PlotFrequencyButton_OnClick(object sender, RoutedEventArgs e)
