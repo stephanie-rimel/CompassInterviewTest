@@ -77,14 +77,14 @@ namespace CompassInterviewTest
             //Todo D. Similarly to how its done in PlotDistanceButton_OnClick, add a function series to the newModel variable
             //Todo     This function series will plot the calculated intensity from the minimum frequency to the maximum frequency, incrementing by the frequency increment constant. All of these are given the OpacityCalculatorConstants.cs
             //Todo     The function will use the input variable as frequency rather than the ChosenFrequency variable
-        
+        //what is the input variable?
             //Plot calculated intensity from the minimum distance to the ChosenDistance variable
             newModel.Series.Add( 
                 //Convert Chosen Frequency to exahertz
                 new FunctionSeries(x => OpacityCalculatorConstants.OpacityDistanceFunction(_viewModel.ChosenMaterialType, _viewModel.ChosenIntensity, _viewModel.ChosenFrequency * 1.0E18, x),
-                    OpacityCalculatorConstants.MinimumDistance,
-                    _viewModel.ChosenDistance,
-                    (_viewModel.ChosenDistance - OpacityCalculatorConstants.MinimumDistance) / OpacityCalculatorConstants.DistanceIncrement));
+                    OpacityCalculatorConstants.MinimumFrequency,
+                    _viewModel.ChosenFrequency,
+                    (_viewModel.ChosenFrequency - OpacityCalculatorConstants.MinimumFrequency) / OpacityCalculatorConstants.FrequencyIncrement));
 
             PlotView.Model = newModel;
 
