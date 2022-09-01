@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "netgBfmmoHiOHHCGd6UE47XEgM49datPY1tlrixNU8my3jThQzkw5izITKPwrUSUuDO5JSMQiPbJp8pNv/zRLg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Stephanie\\RiderProjects\\CompassInterviewTest Package 2\\CompassInterviewTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Stephanie\\.nuget\\packages\\oxyplot.core\\2.1.0\\oxyplot.core.2.1.0.nupkg.sha512",
+    "C:\\Users\\Stephanie\\.nuget\\packages\\oxyplot.wpf\\2.1.0\\oxyplot.wpf.2.1.0.nupkg.sha512",
+    "C:\\Users\\Stephanie\\.nuget\\packages\\oxyplot.wpf.shared\\2.1.0\\oxyplot.wpf.shared.2.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
