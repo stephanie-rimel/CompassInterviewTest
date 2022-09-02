@@ -82,6 +82,7 @@ namespace CompassInterviewTest
         
         
         private static readonly Func<MaterialType, double, double> LinearAttenuationFunction = (materialType, v) => LinearAttenuationCoefficientTable[(materialType, ElectronVoltsB)];
+        //i know i need to use a condition within the lambda but i cant figure it out
         // private static readonly Func<MaterialType, double, double> LinearAttenuationFunction = (materialType, v) => LinearAttenuationCoefficientTable[(materialType, FrequencyToElectronVolts((int)))];
 
             // LinearAttenuationCoefficientTable[(materialType, ElectronVoltsB)];

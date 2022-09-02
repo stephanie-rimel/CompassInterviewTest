@@ -42,25 +42,21 @@ namespace CompassInterviewTest
             // calculatedIntensityLabel.Content = _viewModel.ChosenIntensity;
             //i dont know the distance from the light source
             calculatedIntensityLabel.Content = OpacityCalculatorConstants.OpacityDistanceFunction(
-                _viewModel.ChosenMaterialType, _viewModel.ChosenFrequency * 1.0E18, _viewModel.ChosenDistance,
+                _viewModel.ChosenMaterialType, _viewModel.ChosenIntensity, _viewModel.ChosenFrequency * 1.0E18,
                 _viewModel.ChosenDistance);
 
-            // var valid = ValidateInputVariables(out var errorMessage);
-            // if (valid == false)
-            // {
-            //     calculatedIntensityLabel.Content = "N/A";
-            // }
-            // else
-            // {
-            //     calculatedIntensityLabel.Content =OpacityCalculatorConstants.OpacityDistanceFunction(_viewModel.ChosenMaterialType, _viewModel.ChosenFrequency*1.0E18, _viewModel.ChosenDistance, _viewModel.ChosenDistance-OpacityCalculatorConstants.MinimumDistance);
-            //     
-            // }
+            //
+            // new FunctionSeries(
+            // x => OpacityCalculatorConstants.OpacityDistanceFunction(_viewModel.ChosenMaterialType,
+            //     _viewModel.ChosenIntensity, _viewModel.ChosenFrequency * 1.0E18, x),
+            // OpacityCalculatorConstants.MinimumDistance,
+            // _viewModel.ChosenDistance,
+            // (_viewModel.ChosenDistance - OpacityCalculatorConstants.MinimumDistance) /
+            // OpacityCalculatorConstants.DistanceIncrement);
+
         }
 
-        // private void UpdateCalculatedIntensity(string contentLabel)
-        // {
-        //     calculatedIntensityLabel.Content = contentLabel;
-        // }
+
 
         //Modify this function to set an error message to errorMessage and return false if any of the input variables are outside of the ranges specified in OpacityCalculatorConstants
         // (Make sure to convert the ChosenFrequency value to exahertz by multiplying it by 1.0E18)
@@ -129,6 +125,42 @@ namespace CompassInterviewTest
             //Todo     This function series will plot the calculated intensity from the minimum frequency to the maximum frequency, incrementing by the frequency increment constant. All of these are given the OpacityCalculatorConstants.cs
             //Todo     The function will use the input variable as frequency rather than the ChosenFrequency variable
 
+            
+            //
+            
+            // newModel.Series.Add(
+            //     //Convert Chosen Frequency to exahertz
+            //     new FunctionSeries(
+            //         x => OpacityCalculatorConstants.OpacityDistanceFunction(_viewModel.ChosenMaterialType,
+            //             _viewModel.ChosenIntensity, x, _viewModel.ChosenDistance),
+            //         OpacityCalculatorConstants.MinimumFrequency,
+            //         _viewModel.ChosenFrequency * 1.0E18,
+            //         (OpacityCalculatorConstants.MaximumFrequency * 1.0E18 - OpacityCalculatorConstants.MinimumFrequency * 1.0E18) /
+            //         OpacityCalculatorConstants.FrequencyIncrement));
+            //
+            //
+            
+               // newModel.Series.Add(
+               //  //Convert Chosen Frequency to exahertz
+               //  new FunctionSeries(
+               //      x => OpacityCalculatorConstants.OpacityDistanceFunction(_viewModel.ChosenMaterialType,
+               //          _viewModel.ChosenIntensity, _viewModel.ChosenFrequency * 1.0E18, x),
+               //      OpacityCalculatorConstants.MinimumDistance,
+               //      _viewModel.ChosenDistance,
+               //      (_viewModel.ChosenDistance - OpacityCalculatorConstants.MinimumDistance) /
+               //      OpacityCalculatorConstants.DistanceIncrement));
+               
+               
+               newModel.Series.Add(
+                   //Convert Chosen Frequency to exahertz
+                   new FunctionSeries(
+                       x => OpacityCalculatorConstants.OpacityDistanceFunction(_viewModel.ChosenMaterialType,
+                           _viewModel.ChosenIntensity, x, _viewModel.ChosenDistance),
+                       OpacityCalculatorConstants.MinimumFrequency,
+                       OpacityCalculatorConstants.MaximumFrequency,
+                       ((_viewModel.ChosenFrequency * 1.0E18) - OpacityCalculatorConstants.MinimumFrequency) /
+                       OpacityCalculatorConstants.FrequencyIncrement));
+            
             PlotView.Model = newModel;
 
             if (valid)
@@ -155,7 +187,7 @@ namespace CompassInterviewTest
             var newModel = new PlotModel()
             {
                 Title =
-                    $"Intensity of {_viewModel.ChosenFrequency}EHz radiation through {_viewModel.ChosenMaterialType.ToString()} across to {_viewModel.ChosenDistance}m"
+                    $"Intensity of {_viewModel.ChosenFrequency} EHz radiation through {_viewModel.ChosenMaterialType.ToString()} across to {_viewModel.ChosenDistance}m"
             };
             var xAxis = new LinearAxis
             {
