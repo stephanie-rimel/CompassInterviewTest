@@ -71,17 +71,20 @@ namespace CompassInterviewTest
         //v:  Frequency of light
         // private static readonly Func<MaterialType, double, double> LinearAttenuationFunction = (materialType, v) => LinearAttenuationCoefficientTable[(materialType, ElectronVoltsB)];
 
-        private static readonly Func<MaterialType, double, double> LinearAttenuationFunction = (materialType, v) => 
-                LinearInterpolation(
-                    FrequencyToElectronVolts(ElectronVoltsA),
-                    FrequencyToElectronVolts(ElectronVoltsB),
-                    LinearAttenuationCoefficientTable[(materialType,(int) FrequencyToElectronVolts(ElectronVoltsA))],
-                    LinearAttenuationCoefficientTable[(materialType,(int) FrequencyToElectronVolts(ElectronVoltsA))],
-                    LinearAttenuationCoefficientTable[(materialType,(int) FrequencyToElectronVolts(ElectronVoltsA))]
-                )
-            // LinearAttenuationCoefficientTable[(materialType, ElectronVoltsB)]
-            
-            ;
+        // private static readonly Func<MaterialType, double, double> LinearAttenuationFunction = (materialType, v) => 
+        //         LinearInterpolation(
+        //             FrequencyToElectronVolts(ElectronVoltsA),
+        //             FrequencyToElectronVolts(ElectronVoltsB),
+        //             LinearAttenuationCoefficientTable[(materialType,(int) FrequencyToElectronVolts(ElectronVoltsA))],
+        //             LinearAttenuationCoefficientTable[(materialType,(int) FrequencyToElectronVolts(ElectronVoltsA))],
+        //             LinearAttenuationCoefficientTable[(materialType,(int) FrequencyToElectronVolts(ElectronVoltsA))]
+        //         );
+        
+        
+        private static readonly Func<MaterialType, double, double> LinearAttenuationFunction = (materialType, v) => LinearAttenuationCoefficientTable[(materialType, ElectronVoltsB)];
+        // private static readonly Func<MaterialType, double, double> LinearAttenuationFunction = (materialType, v) => LinearAttenuationCoefficientTable[(materialType, FrequencyToElectronVolts((int)))];
+
+            // LinearAttenuationCoefficientTable[(materialType, ElectronVoltsB)];
 
         
 
